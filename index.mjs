@@ -1,5 +1,12 @@
 let calculationHistory = [];
 const outputHistory = document.getElementById("outputHistory");
+
+function formatHistory(history) {
+    return history.map(item => {
+        return ("---" + `"sum":${item.sum},"difference":${item.difference},"multiplication":${item.multiplication},"division":${item.division},"power":${item.power}`);
+    }).join("\n");
+}
+
 function calculate() {
     // Получаем ввод от пользователя
     let a = parseFloat(prompt("Enter the first number:"));
@@ -14,17 +21,14 @@ function calculate() {
         let sum = a + b;
         let difference = a - b;
         let multiplication = a * b;
-        let division = a / b;
-            if (b == 0) {
-                division = "dividing by zero is impossible";
-            }
+        let division = b !== 0 ? a / b : "dividing by zero is impossible"; // Проверка деления на ноль
         
         let power = Math.abs(a) ** Math.abs(b);
         
         // Добавляем объект в массив и выводим его
         calculationHistory.push({sum, difference, multiplication, division, power});
         console.log(calculationHistory); 
-        outputHistory.value = JSON.stringify(calculationHistory);
+        outputHistory.value = formatHistory(calculationHistory);
     }
 }
 
@@ -33,15 +37,8 @@ startBtn.addEventListener("click", () => {
     calculate();
 });
 
-// const resetBtn = document.getElementById("resetBtn");
-// resetBtn.addEventListener("click", () => {
-//     let newResult = calculate();
-//     calculationHistory.push(newResult);
-//     outputHistory.value = JSON.stringify(calculationHistory);
-// });
-
 const clearBtn = document.getElementById("clearBtn");
-clearBtn.addEventListener("click", () => {1
+clearBtn.addEventListener("click", () => {
     calculationHistory = [];
     outputHistory.value = JSON.stringify(calculationHistory);
 });
