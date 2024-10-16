@@ -23,9 +23,11 @@ p {
     width: 60vw;
     height: 45vh;
     border: none;
-    padding: 10px 10px;
+    padding: 1rem 1rem;
     border: none;
     border-radius: 15px;
+    font-size: 1.2rem;
+    color: #695c5c;
 }
 
 .buttons {
@@ -54,13 +56,15 @@ button:hover {
 
 @media screen and (max-width: 1150px) {
     html, body {
-        width: 90vw;
+        width: 80vw;
     }
     p {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     #outputHistory {
-        width: 90vw;
+        width: 80vw;
+        padding-top: 1.1rem;
+        font-size: 1.1rem;
     }
     .buttons {
         flex-direction: column;
@@ -69,6 +73,15 @@ button:hover {
     }
     button {
         width: 100%;
-        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    p {
+        font-size: 2.5rem;
+    }
+    #outputHistory {
+        width: 90vw;
+        font-size: 1.5rem;
     }
 }
